@@ -1,6 +1,6 @@
 ## Functions Overview – password-store.sh v1.7.4
 
-### 🛠 Internal & Helper Functions
+### Internal & Helper Functions
 | Function | Purpose |
 |----------|--------|
 | `set_git(path)` | Determine which subdirectory is the active Git work tree (or none). |
@@ -15,7 +15,7 @@
 
 ---
 
-### 💻 Platform Helpers
+### Platform Helpers
 | Function | Purpose |
 |----------|--------|
 | `clip(secret, label)` | Copy secret to clipboard, auto-clear after `$CLIP_TIME`, attempt to clear clipboard manager history. |
@@ -24,7 +24,7 @@
 
 ---
 
-### 🔑 User-Facing Commands
+### User-Facing Commands
 | Command / Function | Description |
 |--------------------|------------|
 | `cmd_version` | Print the pass banner and version (v1.7.4). |
@@ -44,7 +44,7 @@
 
 ---
 
-### ⚙️ Command Dispatch
+### Command Dispatch
 At the end of the script, a `case "$1"` statement maps user commands to these functions, for example:
 
 ```bash

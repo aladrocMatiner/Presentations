@@ -13,20 +13,24 @@ Git: Backups & Storage
 ```bash
 sudo apt update
 sudo apt install pass gnupg2 git
-´´´
+```
 || Install SUSE
 
+```bash
 sudo zypper refresh
 sudo zypper in pass gpg2 git
+```
 
 | Generate GPG keys
 
 || The Interactive way
 
+```bash
 gpg --full-generate-key
-
+```
 || The fast way
 
+```bash
 gpg --batch --gen-key <<EOF
 Key-Type: default
 Key-Length: 4096
@@ -38,13 +42,16 @@ Expire-Date: 0
 %no-protection
 %commit
 EOF
-
+```
 
 || GPG commands to know
 
+```bash
 #Listing Certificates
 gpg --list-keys
+```
 
+```bash
 #Export your certificates
 gpg --list-secret-keys --keyid-format=long
 ## example
@@ -62,12 +69,16 @@ gpg --export-secret-subkeys -a <<KEYID>> > jose-secret-subkeys.asc #(Optinal If 
 ### Example
 gpg --export-secret-subkeys -a ABCD1234EFGH5678 > jose-private.asc
 gpg --export-secret-subkeys -a ABCD1234EFGH5678 > jose-secret-subkeys.asc #(Optinal If you have)
+```
 
+```bash
 # Import keys
 gpg --import jose-public.asc
 gpg --import jose-private.asc
 gpg --import jose-secret-subkeys.asc #(Optinal If you have)
+```
 
+```bash
 # Trusting the keys (optional but recommended)
 gpg --edit-key <<KEYID>>
 gpg>trust
@@ -79,6 +90,7 @@ gpg --edit-key ABCD1234EFGH5678
 gpg>trust
 gpg>5    #(ultimate)
 gpg>quit
+```
 
 Notes:
 

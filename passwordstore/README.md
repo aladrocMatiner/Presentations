@@ -321,10 +321,14 @@ pass show email/github
 
 - https://git.zx2c4.com/password-store/
 
-- https://github.com/FiloSottile/passage
+- https://gnupg.org/ 
+
+- https://git-scm.com/ 
+
+
 
 # | Other
 
-- https://github.com/FiloSottile/age
+- https://github.com/FiloSottile/passage
 
 

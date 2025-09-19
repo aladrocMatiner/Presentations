@@ -10,9 +10,10 @@ Git: Backups & Storage
 
 || Install Ubuntu
 
+```bash
 sudo apt update
 sudo apt install pass gnupg2 git
-
+´´´
 || Install SUSE
 
 sudo zypper refresh

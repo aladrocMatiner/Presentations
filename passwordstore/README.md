@@ -343,6 +343,7 @@ pass show email/github
 
 - https://git-scm.com/ 
 
+- https://github.com/aladrocMatiner/Presentations/tree/main/passwordstore
 
 
 # | Other

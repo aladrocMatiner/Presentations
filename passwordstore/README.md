@@ -35,6 +35,24 @@ gpg --full-generate-key
 ```
 ## || The fast way
 
+### | Modern
+```bash
+gpg --batch --gen-key <<EOF
+Key-Type: eddsa
+Key-Curve: ed25519
+Subkey-Type: ecdh
+Subkey-Curve: cv25519
+Name-Real: Jose Rafael Romero Miret
+Name-Email: jose.romero@aladroc.io
+Name-Comment: This is a test (ECC)
+Expire-Date: 0
+%no-protection
+%commit
+EOF
+```
+
+### ||| Legacy
+
 ```bash
 gpg --batch --gen-key <<EOF
 Key-Type: default

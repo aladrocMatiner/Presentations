@@ -172,7 +172,7 @@ pass init "ABCD1234EFGH5678 1111AAAA2222BBBB 333CCCC4444DDDD"
 
 ```bash
 # Insert
-pass insert <<folder>/..<<folder>>../<<keyName>>
+pass insert <<folder>>/..<<folder>>../<<keyName>>
 ## Note: you can build a tree structure using nested folders
 ## Note: pass insert -m allows you to paste multiple lines secret
 
@@ -187,7 +187,7 @@ Retype password for email/github:
 
 ```bash
 # Generate Password
-pass generate <<folder>/..<<folder>>../<<keyName>> <<Password Length>>
+pass generate <<folder>>/..<<folder>>../<<keyName>> <<Password Length>>
 ## Note: pass generate -c copies password to clipboard
 
 ## Example
@@ -255,14 +255,14 @@ tree ~/.password-store
 
 ```bash
 # Show Secret
-pass show <<folder>/..<<folder>>../<<keyName>>
+pass show <<folder>>/..<<folder>>../<<keyName>>
 ```
 
 ## || Check keys encrypted a secret
 
 ```bash
 # Check keys encrypted a secret
-gpg --list-packets ~/.password-store/<<folder>/..<<folder>>../<<keyName>>
+gpg --list-packets ~/.password-store/<<folder>>/..<<folder>>../<<keyName>>
 
 ## Example
 gpg --list-packets ~/.password-store/email/github.gpg

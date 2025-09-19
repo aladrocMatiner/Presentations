@@ -1,0 +1,55 @@
+## Functions Overview – password-store.sh v1.7.4
+
+### 🛠 Internal & Helper Functions
+| Function | Purpose |
+|----------|--------|
+| `set_git(path)` | Determine which subdirectory is the active Git work tree (or none). |
+| `git_add_file(file, msg)` | Add file to Git and commit if there are changes. |
+| `git_commit(msg)` | Commit to the repo, using signed commits if configured. |
+| `yesno(prompt)` | Interactive y/N confirmation; exits non-zero unless “y”. |
+| `die(msg…)` | Print an error and exit with status 1. |
+| `verify_file(path)` | Verify a detached `.sig` signature if `PASSWORD_STORE_SIGNING_KEY` is set. |
+| `set_gpg_recipients(subdir)` | Resolve GPG recipients from `PASSWORD_STORE_KEY` or nearest `.gpg-id`. |
+| `reencrypt_path(path)` | Re-encrypt all `.gpg` files under `path` to current recipients. |
+| `check_sneaky_paths(args…)` | Reject dangerous paths containing `..` to prevent directory traversal. |
+
+---
+
+### 💻 Platform Helpers
+| Function | Purpose |
+|----------|--------|
+| `clip(secret, label)` | Copy secret to clipboard, auto-clear after `$CLIP_TIME`, attempt to clear clipboard manager history. |
+| `qrcode(text, label)` | Render a QR code (UTF-8 in terminal or external viewer). |
+| `tmpdir [nowarn]` | Create a secure temporary directory (prefers `/dev/shm`); shreds files on exit if necessary. |
+
+---
+
+### 🔑 User-Facing Commands
+| Command / Function | Description |
+|--------------------|------------|
+| `cmd_version` | Print the pass banner and version (v1.7.4). |
+| `cmd_usage` | Display full usage/help for all commands and options. |
+| `cmd_init [--path|-p subfolder] gpg-id…` | Initialize the password store or a subfolder, write `.gpg-id`, optionally sign it, and re-encrypt existing entries. Supports de-init if called with a single empty argument. |
+| `cmd_show [--clip[=n]|-c[=n]] [--qrcode[=n]|-q[=n]] pass-name` | Decrypt and print an entry (or list directory). With `--clip` or `--qrcode`, copy or render only the selected line (default 1). |
+| `cmd_find pass-names…` | Search entries case-insensitively by name. |
+| `cmd_grep [GREPOPTIONS] search-string` | Decrypt each entry and run `grep`, highlighting matches. |
+| `cmd_insert [--echo|-e] [--multiline|-m] [--force|-f] pass-name` | Create or overwrite an entry. Prompts for input (no echo by default), supports multiline mode, and commits to git. |
+| `cmd_edit pass-name` | Edit an entry in `${EDITOR:-vi}` via a secure temp file and re-encrypt on save. |
+| `cmd_generate [--no-symbols|-n] [--clip|-c] [--qrcode|-q] [--in-place|-i | --force|-f] pass-name [length]` | Generate a random password (default length from `$GENERATED_LENGTH`), write or in-place replace line 1, optionally copy or render as QR. |
+| `cmd_delete [--recursive|-r] [--force|-f] pass-name` | Delete an entry or directory (confirm unless `--force`), remove empty directories, and update git. |
+| `cmd_copy_move ("copy"|"move") [--force|-f] old-path new-path` | Copy or rename entries/dirs, re-encrypt at the destination, and handle git bookkeeping. Used for `copy|cp` and `rename|mv`. |
+| `cmd_git …` | Run arbitrary Git commands inside the store. `git init` sets up `.gitattributes` and a GPG textconv for diffs. |
+| `cmd_extension_or_show …` | If an extension matches the first argument, run it; otherwise fall back to `cmd_show`. |
+| `cmd_extension name …` | Load and execute `name.bash` from user or system extensions (verifies signature if enabled). |
+
+---
+
+### ⚙️ Command Dispatch
+At the end of the script, a `case "$1"` statement maps user commands to these functions, for example:
+
+```bash
+show|ls|list   → cmd_show
+delete|rm      → cmd_delete
+rename|mv      → cmd_copy_move "move"
+copy|cp        → cmd_copy_move "copy"
+git            → cmd_git

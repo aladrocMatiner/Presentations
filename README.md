@@ -1,28 +1,13 @@
 # Presentations
 
-## English
+Language: English | [Svenska](README.sv.md) | [Español](README.es.md)
 
-Presentation materials and notes stored in this repository.
+Presentation materials (slides/PDFs) and supporting notes stored in this repository.
 
-### Index
-- n8n: `n8n/n8n.pptx`, `n8n/n8n.pdf`
-- Password Store: `passwordstore/PasswordStore.pdf`, `passwordstore/README.md`, `passwordstore/functions-analisys.md`
-- Python Course: `couse-python/README.md` (links to https://github.com/aladrocMatiner/course-python)
+## Index
 
-## Svenska
-
-Presentationsmaterial och anteckningar som lagras i det här repot.
-
-### Index
-- n8n: `n8n/n8n.pptx`, `n8n/n8n.pdf`
-- Password Store: `passwordstore/PasswordStore.pdf`, `passwordstore/README.md`, `passwordstore/functions-analisys.md`
-- Python-kurs: `couse-python/README.md` (länkar till https://github.com/aladrocMatiner/course-python)
-
-## Español
-
-Material de presentaciones y notas almacenadas en este repositorio.
-
-### Índice
-- n8n: `n8n/n8n.pptx`, `n8n/n8n.pdf`
-- Password Store: `passwordstore/PasswordStore.pdf`, `passwordstore/README.md`, `passwordstore/functions-analisys.md`
-- Curso de Python: `couse-python/README.md` (apunta a https://github.com/aladrocMatiner/course-python)
+| Topic | Location | Contents |
+|---|---|---|
+| n8n | `n8n/` | `n8n.pptx`, `n8n.pdf` |
+| Password Store | `passwordstore/` | `PasswordStore.pdf`, `README.md`, `functions-analisys.md` |
+| Python Course | `couse-python/` | `README.md` (links to https://github.com/aladrocMatiner/course-python) |
